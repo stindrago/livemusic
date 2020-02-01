@@ -16,24 +16,9 @@
 
 (defonce metro (metronome 120))
 
-(def bar
-  (let [wobble [[0 #(ctl wob :freq (n :e1) :speed 1)]
-                [0 #(ctl wob :speed 2)]
-                [0 #(ctl wob :speed 4)]
-                [0 #(ctl wob :speed 8)]
-                [0 #(ctl wob :freq (n :f#5) :speed 8)]
-                [0 #(ctl wob :freq (n :e2) :speed 2)]
-                [0 #(ctl wob :speed 4)]
-                [0 #(ctl wob :speed 8)]]
 
-        drum [[  0   kick]
-              [  0   snare
-               2/4   kick]
-              [  0   kick
-               3/4   kick]
-              [  0   snare]]]
+(def bar)
 
-    (mapv concat wobble (cycle drum))))
 
 (defn player [tick]
   (let [beat (mod (int tick) (count bar))]
@@ -54,6 +39,25 @@
                (bpf wob 1500 2)
                (* 0.2 (g-verb wob 9 0.7 0.7)))]
     wob))
+
+(def bar
+  (let [wobble [[0 #(ctl wob :freq (n :e1) :speed 1)]
+                [0 #(ctl wob :speed 2)]
+                [0 #(ctl wob :speed 4)]
+                [0 #(ctl wob :speed 8)]
+                [0 #(ctl wob :freq (n :f#5) :speed 8)]
+                [0 #(ctl wob :freq (n :e2) :speed 2)]
+                [0 #(ctl wob :speed 4)]
+                [0 #(ctl wob :speed 8)]]
+
+        drum [[  0   kick]
+              [  0   snare
+               2/4   kick]
+              [  0   kick
+               3/4   kick]
+              [  0   snare]]]
+
+    (mapv concat wobble (cycle drum))))
 
 
 (defn -main

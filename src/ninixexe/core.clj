@@ -16,9 +16,7 @@
 
 (defonce metro (metronome 120))
 
-
 (def bar)
-
 
 (defn player [tick]
   (let [beat (mod (int tick) (count bar))]
@@ -66,7 +64,13 @@
 
   (println "\n\n~~Facciamo baldoria!!~~!\n")
   (println "<CTRL + C> per fermare")
-  ;(stop)
+
+  (recording-start "~/Desktop/clojure_music.wav")
+
   (player (metro))
   (wob)
-)
+
+  (Thread/sleep 60000)
+  (stop)
+  (recording-stop)
+  (System/exit 0))

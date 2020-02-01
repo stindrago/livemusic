@@ -64,8 +64,8 @@
   "Main class."
   [& args]
 
-  (println "\n\nLETS START THE PARTY!\n")
-  (println "<CTRL + C> to stop")
+  (println "\n\n~~Facciamo baldoria!!~~!\n")
+  (println "<CTRL + C> per fermare")
   ;(stop)
   (player (metro))
   (wob)
